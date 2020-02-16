@@ -14,9 +14,7 @@
     "**/.git/subtree-cache/**": true,
     "**/node_modules/*/**": true
   },
-  "editor.formatOnSave": false,
-  "editor.renderWhitespace": "all",
-  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
   "editor.tabSize": 4,
   "editor.multiCursorModifier": "alt",
   "editor.wordWrap": "on",
@@ -34,5 +32,8 @@
   "files.associations": {
     "*.jsx": "JavaScript React",
     "*.js": "javascriptreact"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }

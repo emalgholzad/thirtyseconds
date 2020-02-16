@@ -1,15 +1,31 @@
 import React, { Component } from "react";
+import ThirtySecondsLogo from "./../logo.svg";
+import { Grid, Button } from "@material-ui/core";
 
 class Home extends Component {
-  state = {
-    
-  };
-
-  componentDidMount() {
-    
-  }
   render() {
-    return '';
+    const styleLogo = {
+      marginTop: "50px",
+      width: "250px"
+    };
+
+    const styleButton = {
+      marginTop: "50px"
+    };
+
+    return (
+      <Grid container direction="column" justify="center" alignItems="center">
+        <img src={ThirtySecondsLogo} style={styleLogo} alt="30 seconds logo" />
+        <Button
+          variant="outlined"
+          size="large"
+          color="primary"
+          style={styleButton}
+        >
+          Start New Game
+        </Button>
+      </Grid>
+    );
   }
 }
 
