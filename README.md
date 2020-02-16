@@ -2,16 +2,16 @@
 
 Start project
 
-### `yarn start`
+## `yarn start`
 
 Test
 
-### `yarn test`
+## `yarn test`
 
 Build
 
-### `yarn build`
+## `yarn build`
 
 Deploy
 
-### `yarn deploy`
+## `yarn deploy`
