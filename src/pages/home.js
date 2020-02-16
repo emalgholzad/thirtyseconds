@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ThirtySecondsLogo from "./../logo.svg";
+import { Link } from "react-router-dom";
 import { Grid, Button } from "@material-ui/core";
 
 class Home extends Component {
@@ -21,6 +22,8 @@ class Home extends Component {
           size="large"
           color="primary"
           style={styleButton}
+          component={Link}
+          to="/new"
         >
           Start New Game
         </Button>
