@@ -5,10 +5,27 @@ import Countdown from "./../components/ui/countdown";
 
 export default class NewGame extends Component {
   state = {
-    seconds: 30
+    seconds: 30,
+    showStartButton: true
   };
 
-  componentDidMount() {
+  // componentDidMount() {
+  //   this.countdown = setInterval(() => {
+  //     const seconds = this.state.seconds;
+
+  //     if (seconds > 0) {
+  //       this.setState(({ seconds }) => ({
+  //         seconds: seconds - 1
+  //       }));
+  //     }
+  //   }, 1000);
+  // }
+
+  handleCountdown = () => {
+    this.setState({
+      showStartButton: false
+    });
+
     this.countdown = setInterval(() => {
       const seconds = this.state.seconds;
 
@@ -18,11 +35,11 @@ export default class NewGame extends Component {
         }));
       }
     }, 1000);
-  }
+  };
 
-  componentWillUnmount() {
-    clearInterval(this.countdown);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.countdown);
+  // }
 
   render() {
     const styleCountDown = {
@@ -30,7 +47,7 @@ export default class NewGame extends Component {
       marginTop: "50px",
       marginBottom: "50px"
     };
-    const { seconds } = this.state;
+    const { seconds, showStartButton } = this.state;
 
     return (
       <Grid container direction="column" justify="center" alignItems="center">
@@ -38,9 +55,16 @@ export default class NewGame extends Component {
           <Countdown timer={seconds} />
         </div>
 
-        <Button variant="outlined" size="large" color="primary">
-          Start
-        </Button>
+        {showStartButton && (
+          <Button
+            variant="outlined"
+            size="large"
+            color="primary"
+            onClick={this.handleCountdown}
+          >
+            Start
+          </Button>
+        )}
       </Grid>
     );
   }
