@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button, ListItem, ListItemText } from "@material-ui/core";
 
 import Countdown from "./../components/ui/countdown";
 import { getWords } from "./../services/Words";
+import { shuffleArray } from "./../utils/words";
 
 export default class NewGame extends Component {
   state = {
@@ -17,32 +18,11 @@ export default class NewGame extends Component {
     this.setState({
       words: await getWords()
     });
-
-    //   this.countdown = setInterval(() => {
-    //     const seconds = this.state.seconds;
-
-    //     if (seconds > 0) {
-    //       this.setState(({ seconds }) => ({
-    //         seconds: seconds - 1
-    //       }));
-    //     }
-    //   }, 1000);
   }
 
-  shuffleArray = a => {
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  };
-
   handleCountdown = () => {
-    // Get all words
-    // const allWords = await getWords();
-
     // Shuffle words
-    const shuffledArray = this.shuffleArray(this.state.words);
+    const shuffledArray = shuffleArray(this.state.words);
 
     // Grab max words
     this.setState({
@@ -66,15 +46,15 @@ export default class NewGame extends Component {
     }, 1000);
   };
 
-  // componentWillUnmount() {
-  //   clearInterval(this.countdown);
-  // }
-
   render() {
     const styleCountDown = {
       width: "200px",
       marginTop: "50px",
       marginBottom: "50px"
+    };
+    const styleListItem = {
+      with: "200px",
+      margin: "0 auto"
     };
     const { seconds, showStartButton, grabWordsToPlay } = this.state;
 
@@ -96,8 +76,14 @@ export default class NewGame extends Component {
         )}
 
         {!showStartButton &&
-          grabWordsToPlay.map(word => {
-            return <h2 key={word}>{word}</h2>;
+          grabWordsToPlay.map((word, i) => {
+            return (
+              <div style={styleListItem}>
+                <ListItem button key={i}>
+                  <ListItemText>{word}</ListItemText>
+                </ListItem>
+              </div>
+            );
           })}
       </Grid>
     );
