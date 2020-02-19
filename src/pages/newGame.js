@@ -49,10 +49,12 @@ export default class NewGame extends Component {
       grabWordsToPlay: shuffledArray.slice(0, this.state.maxWords)
     });
 
+    // Hide start button
     this.setState({
       showStartButton: false
     });
 
+    // Start countdown
     this.countdown = setInterval(() => {
       const seconds = this.state.seconds;
 
